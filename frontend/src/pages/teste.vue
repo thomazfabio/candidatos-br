@@ -1,9 +1,10 @@
 <script setup>
 import { ref } from 'vue'
+import Mapa from '@/components/Mapa.vue';
 </script>
 
 <template>
-  <div>
-    <h1>Teste</h1>
-  </div>
+  <v-container>
+    <Mapa />
+  </v-container>
 </template>
