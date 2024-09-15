@@ -1,10 +1,10 @@
 <script setup>
 import { ref } from 'vue'
-import Mapa from '@/components/Mapa.vue';
+import BuscaCandidato from '@/components/BuscaCandidato.vue';
 </script>
 
 <template>
   <v-container>
-    <Mapa />
+    <BuscaCandidato />
   </v-container>
 </template>

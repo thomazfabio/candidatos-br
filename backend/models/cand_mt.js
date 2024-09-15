@@ -13,7 +13,6 @@ const candidatosCidade = cand_mt_json.filter(candidato => candidato.NM_UE === ca
 
 // Exibindo o nome de todos os candidatos da cidade filtrada
 candidatosCidade.forEach(candidato => {
-  console.log(candidato);
 });
 
 

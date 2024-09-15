@@ -8,7 +8,7 @@ import { RouterLink, RouterView } from 'vue-router'
       <v-app-bar-title>Eleições municipais 2024</v-app-bar-title>
     </v-app-bar>
     <v-main>
-      <v-container>
+      <v-container fluid>
         <RouterView />
       </v-container>
     </v-main>
