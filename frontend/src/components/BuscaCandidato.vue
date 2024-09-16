@@ -1,13 +1,18 @@
 <script setup>
 import { ref, watch } from 'vue';
 import { useRegiaoSelecionada } from '@/stores/buscaCandidatos';
+import { storeToRefs } from 'pinia';
 
 // Inicializa a store
 const regiaoSelecionada = useRegiaoSelecionada();
 
 // Estado local para o select
-const selectEstado = ref({ state: 'Selecione o estado', abbr: '' });
-const selectCidade = ref({ cidade: 'Selecione a cidade' });
+const selectEstado = ref({ state: 'selecione o estado', abbr: '' });
+const selectCidade = ref(null);
+async function buscarCandidatos() {
+  // Chama a ação da store para buscar os candidatos
+  await regiaoSelecionada.buscarCandidatos(selectEstado.value.abbr, selectCidade.value);
+}
 
 // Itens para os selects
 const itemsEstado = [
@@ -39,29 +44,7 @@ const itemsEstado = [
   { state: 'Tocantins', abbr: 'TO' }
 ];
 
-const itemsCidade = [
-  { cidade: 'Acrelândia' },
-  { cidade: 'Assis Brasil' },
-  { cidade: 'Brasiléia' },
-  { cidade: 'Bujari' },
-  { cidade: 'Capixaba' },
-  { cidade: 'Cruzeiro do Sul' },
-  { cidade: 'Epitaciolândia' },
-  { cidade: 'Feijó' },
-  { cidade: 'Jordão' },
-  { cidade: 'Mâncio Lima' },
-  { cidade: 'Manoel Urbano' },
-  { cidade: 'Marechal Thaumaturgo' },
-  { cidade: 'Plácido de Castro' },
-  { cidade: 'Porto Walter' },
-  { cidade: 'Rio Branco' },
-  { cidade: 'Rodrigues Alves' },
-  { cidade: 'Santa Rosa do Purus' },
-  { cidade: 'Sena Madureira' },
-  { cidade: 'Senador Guiomard' },
-  { cidade: 'Tarauacá' },
-  { cidade: 'Xapuri' }
-];
+const itemsCidade = storeToRefs(regiaoSelecionada).cidades;
 
 // Assiste as mudanças de `selectEstado` e chama a ação da store
 watch(selectEstado, (newEstado) => {
@@ -72,26 +55,11 @@ watch(selectEstado, (newEstado) => {
 </script>
 
 <template>
-  <v-select
-    v-model="selectEstado"
-    :hint="`${selectEstado?.state ?? ''}, ${selectEstado?.abbr ?? ''}`"
-    :items="itemsEstado"
-    item-title="state"
-    item-value="abbr"
-    label="Select"
-    persistent-hint
-    return-object
-    single-line
-  />
+  <v-select variant="outlined" v-model="selectEstado" :items="itemsEstado" item-title="state" item-value="abbr"
+    label="Select" persistent-hint return-object single-line />
 
-  <v-select
-    v-model="selectCidade"
-    :hint="selectCidade.cidade"
-    :items="itemsCidade"
-    item-title="cidade"
-    label="Select"
-    persistent-hint
-    return-object
-    single-line
-  />
+  <v-autocomplete v-model="selectCidade" label="selecione a cidade" :items="itemsCidade" item-title="cidade"
+    variant="outlined" no-data-text="antes de prosseguir selecione o estado" single-line></v-autocomplete>
+
+  <v-btn color="primary" dark @click="buscarCandidatos">Buscar</v-btn>
 </template>

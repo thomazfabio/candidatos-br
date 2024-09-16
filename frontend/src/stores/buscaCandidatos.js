@@ -2,6 +2,7 @@
 import { defineStore } from 'pinia';
 import axios from 'axios';
 
+
 export const useRegiaoSelecionada = defineStore('regiaoSelecionada', {
   state: () => ({
     estado: {
@@ -9,6 +10,7 @@ export const useRegiaoSelecionada = defineStore('regiaoSelecionada', {
       estadoSigla: null,
     },
     cidades: [],
+    candidatos: [],
   }),
   actions: {
     async setEstado(estado) {
@@ -18,14 +20,25 @@ export const useRegiaoSelecionada = defineStore('regiaoSelecionada', {
       if (this.estado.estadoSigla !== null) {
         await axios
           .get(
-          //`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${this.estado.estadoSigla}/distritos`
-          `http://localhost:3000/cidades/${this.estado.estadoSigla}`
+            //`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${this.estado.estadoSigla}/distritos`
+            `http://localhost:3000/cidades/${this.estado.estadoSigla}`
           )
           .then((response) => {
             this.cidades = response.data;
             console.log(this.cidades);
           });
       }
-    }
+    },
+    async buscarCandidatos(estado, cidade) {
+      console.log(estado + ' ' + cidade);
+      await axios
+        .get(
+          `http://localhost:3000/candidatos/${estado}/${cidade}`
+        )
+        .then((response) => {
+          console.log(response.data);
+          this.candidatos = response.data;
+        });
+    },
   }
 });

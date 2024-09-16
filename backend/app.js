@@ -6,8 +6,8 @@ const cors = require("cors");
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var candidatosRouter = require('./routes/candidatos_router');
-var cidadesRouter = require('./routes/buscaCidadePorEstado');
+var candidatosRouter = require('./routes/buscaCandidatos');
+var cidadesRouter = require('./routes/buscaCidades');
 
 var app = express();
 app.use(cors());
