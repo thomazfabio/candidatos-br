@@ -1,21 +1,9 @@
 <script setup>
-import { ref } from 'vue'
-import Mapa from '@/components/Mapa.vue';
-import { useRegiaoSelecionada } from '@/stores/buscaCandidatos';
-const { regiaoSelecionada } = useRegiaoSelecionada();
-
+import BuscaCandidato from '@/components/BuscaCandidato1.vue';
 </script>
 
 <template>
-    <v-card elevation="15">
-      <div class="mapa">
-        <Mapa style="width: 100%; height: 100%;" />
-      </div>
-    </v-card>
+  <BuscaCandidato />
 </template>
 
-<style scoped>
-.mapa {
-  height: 500px;
-}
-</style>
+<style scoped></style>

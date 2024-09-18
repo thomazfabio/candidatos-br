@@ -11,6 +11,8 @@ export const useRegiaoSelecionada = defineStore('regiaoSelecionada', {
     },
     cidades: [],
     candidatos: [],
+    candidatosIsLoading: false,
+    candidatosError: null,
   }),
   actions: {
     async setEstado(estado) {
@@ -30,6 +32,7 @@ export const useRegiaoSelecionada = defineStore('regiaoSelecionada', {
       }
     },
     async buscarCandidatos(estado, cidade) {
+      this.candidatosIsLoading = true;
       console.log(estado + ' ' + cidade);
       await axios
         .get(
@@ -38,6 +41,10 @@ export const useRegiaoSelecionada = defineStore('regiaoSelecionada', {
         .then((response) => {
           console.log(response.data);
           this.candidatos = response.data;
+          this.candidatosIsLoading = false;
+        }).catch((error) => {
+          this.candidatosError = error;
+          this.candidatosIsLoading = false;
         });
     },
   }

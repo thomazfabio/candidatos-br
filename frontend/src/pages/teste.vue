@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue'
-import BuscaCandidato from '@/components/BuscaCandidato.vue';
+import BuscaCandidato from '@/components/BuscaCandidato1.vue';
 </script>
 
 <template>
