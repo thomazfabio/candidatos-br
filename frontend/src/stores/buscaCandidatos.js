@@ -13,6 +13,8 @@ export const useRegiaoSelecionada = defineStore('regiaoSelecionada', {
     candidatos: [],
     candidatosIsLoading: false,
     candidatosError: null,
+    estadoSelected: null,
+    cidadeSelected: null,
   }),
   actions: {
     async setEstado(estado) {
@@ -40,6 +42,8 @@ export const useRegiaoSelecionada = defineStore('regiaoSelecionada', {
         )
         .then((response) => {
           console.log(response.data);
+          this.cidadeSelected = cidade;
+          this.estadoSelected = estado;
           this.candidatos = response.data;
           this.candidatosIsLoading = false;
         }).catch((error) => {
