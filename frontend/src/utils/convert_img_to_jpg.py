@@ -31,6 +31,6 @@ def converter_para_jpg(pasta_origem):
             print(f"Arquivo {arquivo} não é uma imagem suportada.")
 
 # Exemplo de uso:
-pasta_origem = '../../public/images/foto_cand2024_MT_div'
+pasta_origem = '../../public/images/foto_cand2024_SP_div'
 
 converter_para_jpg(pasta_origem)

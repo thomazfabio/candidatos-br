@@ -6,100 +6,10 @@ import { shallowRef } from 'vue'
 
 const search = shallowRef('')
 const candidatos = regiaoSelecionada.candidatos;
-//const caminhoImagem = '/images/foto_cand2024_MT_div/FMT';
 const caminhoImagem = ref('');
 const cidadeSelected = regiaoSelecionada.cidadeSelected;
 const estadoSelected = regiaoSelecionada.estadoSelected;
-
-
-
-
-//imagnes por estado
-if (estadoSelected == 'MT') {
-    caminhoImagem.value = '/images/foto_cand2024_MT_div/FMT';
-}
-
-if (estadoSelected == 'MS') {
-    caminhoImagem.value = '/images/foto_cand2024_MS_div/FMS';
-}
-if (estadoSelected == 'GO') {
-    caminhoImagem.value = '/images/foto_cand2024_GO_div/FGO';
-}
-if (estadoSelected == 'DF') {
-    caminhoImagem.value = '/images/foto_cand2024_DF_div/FDF';
-}
-if (estadoSelected == 'TO') {
-    caminhoImagem.value = '/images/foto_cand2024_TO_div/FTO';
-}
-if (estadoSelected == 'RO') {
-    caminhoImagem.value = '/images/foto_cand2024_RO_div/FRO';
-}
-if (estadoSelected == 'AC') {
-    caminhoImagem.value = '/images/foto_cand2024_AC_div/FAC';
-}
-if (estadoSelected == 'AM') {
-    caminhoImagem.value = '/images/foto_cand2024_AM_div/FAM';
-}
-if (estadoSelected == 'RR') {
-    caminhoImagem.value = '/images/foto_cand2024_RR_div/FRR';
-}
-if (estadoSelected == 'PA') {
-    caminhoImagem.value = '/images/foto_cand2024_PA_div/FPA';
-}
-if (estadoSelected == 'AP') {
-    caminhoImagem.value = '/images/foto_cand2024_AP_div/FAP';
-}
-if (estadoSelected == 'MA') {
-    caminhoImagem.value = '/images/foto_cand2024_MA_div/FMA';
-}
-if (estadoSelected == 'PI') {
-    caminhoImagem.value = '/images/foto_cand2024_PI_div/FPI';
-}
-if (estadoSelected == 'CE') {
-    caminhoImagem.value = '/images/foto_cand2024_CE_div/FCE';
-}
-if (estadoSelected == 'RN') {
-    caminhoImagem.value = '/images/foto_cand2024_RN_div/FRN';
-}
-if (estadoSelected == 'PB') {
-    caminhoImagem.value = '/images/foto_cand2024_PB_div/FPB';
-}
-if (estadoSelected == 'PE') {
-    caminhoImagem.value = '/images/foto_cand2024_PE_div/FPE';
-}
-if (estadoSelected == 'AL') {
-    caminhoImagem.value = '/images/foto_cand2024_AL_div/FAL';
-}
-if (estadoSelected == 'SE') {
-    caminhoImagem.value = '/images/foto_cand2024_SE_div/FSE';
-}
-if (estadoSelected == 'BA') {
-    caminhoImagem.value = '/images/foto_cand2024_BA_div/FBA';
-}
-if (estadoSelected == 'MG') {
-    caminhoImagem.value = '/images/foto_cand2024_MG_div/FMG';
-}
-if (estadoSelected == 'ES') {
-    caminhoImagem.value = '/images/foto_cand2024_ES_div/FES';
-}
-if (estadoSelected == 'RJ') {
-    caminhoImagem.value = '/images/foto_cand2024_RJ_div/FRJ';
-}
-if (estadoSelected == 'SP') {
-    caminhoImagem.value = '/images/foto_cand2024_SP_div/FSP';
-}
-if (estadoSelected == 'PR') {
-    caminhoImagem.value = '/images/foto_cand2024_PR_div/FPR';
-}
-if (estadoSelected == 'SC') {
-    caminhoImagem.value = '/images/foto_cand2024_SC_div/FSC';
-}
-if (estadoSelected == 'RS') {
-    caminhoImagem.value = '/images/foto_cand2024_RS_div/FRS';
-}
-if (estadoSelected == 'MS') {
-    caminhoImagem.value = '/images/foto_cand2024_MS_div/FMS';
-}
+caminhoImagem.value = 'https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/img/2045202024/'
 </script>
 
 <template>
@@ -124,7 +34,7 @@ if (estadoSelected == 'MS') {
 
                                     <v-avatar class="mx-auto mt-5" size="100" border="md" color="primary">
                                         <v-img
-                                            :src="caminhoImagem + item.raw.SQ_CANDIDATO + '_div.jpg'"><!-- Skeleton Loader dentro do v-img -->
+                                            :src="caminhoImagem + item.raw.SQ_CANDIDATO + '/'+item.raw.SG_UE"><!-- Skeleton Loader dentro do v-img -->
                                             <template v-slot:placeholder>
                                                 <v-skeleton-loader type="image" width="100"
                                                     height="100"></v-skeleton-loader>
