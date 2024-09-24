@@ -13,19 +13,24 @@ caminhoImagem.value = 'https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo
 </script>
 
 <template>
-    <h2>{{ cidadeSelected + ' , ' + estadoSelected }}</h2>
+    
     <v-card>
+
         <v-data-iterator :items="candidatos" :items-per-page="30" :search="search">
+
             <template v-slot:header>
-                <v-toolbar class="px-2">
-                    <v-text-field v-model="search" density="comfortable" placeholder="Search"
-                        prepend-inner-icon="mdi-magnify" style="max-width: 600px;" variant="solo" clearable
-                        hide-details></v-text-field>
-                </v-toolbar>
+                <v-container class="pa-0">
+                    <h2>{{ cidadeSelected + ' , ' + estadoSelected }}</h2>
+                    <v-toolbar class="px-2 ma-0">
+                        <v-text-field v-model="search" density="comfortable" placeholder="Search"
+                            prepend-inner-icon="mdi-magnify" style="max-width: 600px;" variant="solo" clearable
+                            hide-details></v-text-field>
+                    </v-toolbar>
+                </v-container>
             </template>
 
             <template v-slot:default="{ items }">
-                <v-container class="pa-2" fluid>
+                <v-container class="pa-2">
                     <v-row dense>
 
                         <v-col v-for="item in items" :key="item.title" cols="12" md="4">
@@ -34,7 +39,7 @@ caminhoImagem.value = 'https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo
 
                                     <v-avatar class="mx-auto mt-5" size="100" border="md" color="primary">
                                         <v-img
-                                            :src="caminhoImagem + item.raw.SQ_CANDIDATO + '/'+item.raw.SG_UE"><!-- Skeleton Loader dentro do v-img -->
+                                            :src="caminhoImagem + item.raw.SQ_CANDIDATO + '/' + item.raw.SG_UE"><!-- Skeleton Loader dentro do v-img -->
                                             <template v-slot:placeholder>
                                                 <v-skeleton-loader type="image" width="100"
                                                     height="100"></v-skeleton-loader>

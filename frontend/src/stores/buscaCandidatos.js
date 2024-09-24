@@ -25,7 +25,7 @@ export const useRegiaoSelecionada = defineStore('regiaoSelecionada', {
         await axios
           .get(
             //`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${this.estado.estadoSigla}/distritos`
-            `http://localhost:3000/cidades/${this.estado.estadoSigla}`
+            `http://209.145.49.105:3000/cidades/${this.estado.estadoSigla}`
           )
           .then((response) => {
             this.cidades = response.data;
@@ -38,7 +38,7 @@ export const useRegiaoSelecionada = defineStore('regiaoSelecionada', {
       console.log(estado + ' ' + cidade);
       await axios
         .get(
-          `http://localhost:3000/candidatos/${estado}/${cidade}`
+          `http://209.145.49.105:3000/candidatos/${estado}/${cidade}`
         )
         .then((response) => {
           console.log(response.data);
