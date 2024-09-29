@@ -4,8 +4,6 @@ import { RouterLink, RouterView } from 'vue-router'
 const itemsMenu = [
   { title: 'HOME', to: '/' },
   { title: 'CANDIDATOS', to: '/candidatos' },
-  { title: 'BLOG', to: '/blog' },
-  { title: 'SOBRE', to: '/sobre' },
 ]
 const drawer = ref(false)
 function toggleDrawer() {
@@ -67,4 +65,5 @@ window.addEventListener('resize', () => {
   </v-app>
 </template>
 
-<style scoped></style>
+<style scoped>
+</style>

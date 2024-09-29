@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Logo Candidatos BR</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f0f0f0;
+    }
+
+    .logo-container {
+      padding-top: 0px;
+      padding-bottom: 0px;
+      padding-left: 20PX;
+      padding-right: 20PX;
+      border-radius: 20px; /* Cantos arredondados */
+      border: 5px solid;
+      background-color: transparent;
+      animation: borderAnimation 2s infinite;
+      border-image-slice: 1;
+    }
+
+    .logo {
+      font-family: 'Roboto', sans-serif;
+      font-weight: 700;
+      font-size: 4rem;
+      background: linear-gradient(90deg, 
+        #002776 0%,  /* Azul */
+        #ffdf00 33%, /* Amarelo */
+        #009c3b 66%, /* Verde */
+        #002776 100%  /* Volta ao Azul */
+      );
+      background-size: 150%;
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      letter-spacing: -0.02em;
+      -webkit-text-stroke: 2px #000; /* Contorno preto nas letras */
+    }
+
+    @keyframes borderAnimation {
+      0% {
+        border-image: linear-gradient(90deg, #002776, #009c3b, #ffdf00, #002776) 1;
+      }
+      50% {
+        border-image: linear-gradient(90deg, #009c3b, #ffdf00, #002776, #009c3b) 1;
+      }
+      100% {
+        border-image: linear-gradient(90deg, #002776, #009c3b, #ffdf00, #002776) 1;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="logo-container">
+    <div class="logo">
+      CANDIDATOS BR
+    </div>
+  </div>
+
+</body>
+</html>

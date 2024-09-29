@@ -3,6 +3,7 @@ import { defineStore } from 'pinia';
 import axios from 'axios';
 
 
+
 export const useRegiaoSelecionada = defineStore('regiaoSelecionada', {
   state: () => ({
     estado: {
@@ -25,7 +26,7 @@ export const useRegiaoSelecionada = defineStore('regiaoSelecionada', {
         await axios
           .get(
             //`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${this.estado.estadoSigla}/distritos`
-            `http://209.145.49.105:3000/cidades/${this.estado.estadoSigla}`
+            `https://api.fabiothomaz.com.br/candidatos-br/cidades/${this.estado.estadoSigla}`
           )
           .then((response) => {
             this.cidades = response.data;
@@ -38,7 +39,7 @@ export const useRegiaoSelecionada = defineStore('regiaoSelecionada', {
       console.log(estado + ' ' + cidade);
       await axios
         .get(
-          `http://209.145.49.105:3000/candidatos/${estado}/${cidade}`
+          `https://api.fabiothomaz.com.br/candidatos-br/candidatos/${estado}/${cidade}`
         )
         .then((response) => {
           console.log(response.data);
